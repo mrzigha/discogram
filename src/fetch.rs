@@ -25,6 +25,7 @@ struct Channel {
 #[derive(Debug)]
 pub struct MessageDetails {
     pub channel_name: String,
+    pub channel_id: String,
     pub author_name: String,
     pub timestamp: String,
     pub content: String,
@@ -72,6 +73,7 @@ async fn fetch_messages_details(client: &reqwest::Client, messages_url: &str, ch
         .into_iter()
         .map(|msg| MessageDetails {
             channel_name: channel_name.clone(),
+            channel_id: msg.channel_id,
             author_name: msg.author.username,
             timestamp: msg.timestamp,
             content: msg.content,
