@@ -4,12 +4,18 @@ use std::fs;
 #[derive(Deserialize)]
 pub struct Config {
     pub discord: Discord,
+    pub channels: Vec<Channel>,
 }
 
 #[derive(Deserialize)]
 pub struct Discord {
     pub auth_token: String,
-    pub channels: Vec<String>,
+}
+
+#[derive(Deserialize)]
+pub struct Channel {
+    pub id: String,
+    pub name: String,
 }
 
 impl Config {
