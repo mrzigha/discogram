@@ -5,3 +5,5 @@ docker-compose.yml
 .git
 .gitignore
 .discogram
+README.md
+LICENSE
