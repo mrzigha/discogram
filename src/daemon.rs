@@ -11,6 +11,6 @@ pub async fn daemon(config: &Config)
                 println!("Message is new: {:?}", message);
             }
         }
-        tokio::time::sleep(tokio::time::Duration::from_secs(3600)).await;
+        tokio::time::sleep(tokio::time::Duration::from_secs(config.general.trigger)).await;
     }
 }

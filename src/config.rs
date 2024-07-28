@@ -3,10 +3,15 @@ use std::fs;
 
 #[derive(Deserialize)]
 pub struct Config {
+    pub general: General,
     pub discord: Discord,
     pub channels: Vec<Channel>,
 }
 
+#[derive(Deserialize)]
+pub struct General {
+    pub trigger: u64
+}
 #[derive(Deserialize)]
 pub struct Discord {
     pub auth_token: String,
