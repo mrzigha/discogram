@@ -1,0 +1,10 @@
+services:
+  discogram:
+    image: discogram:v0.1.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+    - /home/virgil/Documents/Dev/discogram/.discogram/config.toml:/home/discogram/.discogram/config.toml
+    - /home/virgil/Documents/Dev/discogram/.discogram/state.json:/home/discogram/.discogram/state.json
+    restart: always
