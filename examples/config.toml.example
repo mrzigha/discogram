@@ -1,0 +1,17 @@
+[general]
+trigger = 3600 # TIME BEFORE MESSAGE RECHECKING
+
+[telegram]
+bot_token = "YOUR TELEGRAM BOT TOKEN"
+chat_id = "YOUR TELEGRAM CHANNEL ID"
+
+[discord]
+auth_token = "YOUR DISCORD AUTHORIZATION TOKEN"
+
+[[channels]]
+id = "CHANNEL ID"
+name = "GUILD NAME"
+
+[[channels]]
+id = "CHANNEL ID"
+name = "GUILD NAME"
