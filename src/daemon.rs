@@ -12,7 +12,7 @@ pub async fn daemon(config: &Config)
         for message in messages {
             if stateful::process_stateful_message(&message.content, &message.channel_id) == true {
                 println!("Message is new: {:?}", message);
-                let formated_message = format!("**{}: {}**\n**At: {}**\n\n{}", message.guild_name, message.channel_name, message.timestamp, message.content);
+                let formated_message = format!("**{}: {}**\n**At: {}**\n**By: {}**\n\n{}", message.guild_name, message.channel_name, message.timestamp, message.author_name, message.content);
                 bot.send_message(config.telegram.chat_id.to_string(), &formated_message).await.unwrap();
                 tokio::time::sleep(tokio::time::Duration::from_secs(30)).await;
             }

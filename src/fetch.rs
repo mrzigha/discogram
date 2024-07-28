@@ -4,7 +4,6 @@ use crate::config;
 
 #[derive(Deserialize, Debug)]
 struct RawMessage {
-    id: String,
     content: String,
     author: Author,
     timestamp: String,
@@ -18,15 +17,9 @@ struct Author {
 
 #[derive(Deserialize, Debug)]
 struct Channel {
-    id: String,
     name: String,
 }
 
-#[derive(Deserialize, Debug)]
-struct Guild {
-    id: String,
-    name: String,
-}
 
 #[derive(Debug)]
 pub struct MessageDetails {
@@ -131,25 +124,4 @@ async fn fetch_channel_name(client: &reqwest::Client, url: &str, token: &str) ->
     };
 
     return Ok(channel.name);
-}
-
-async fn fetch_guild_name(client: &reqwest::Client, url: &str, token: &str) -> Result<String, reqwest::Error> 
-{
-    let res = match client.get(url).header("Authorization", token).send().await {
-        Ok(res) => res,
-        Err(e) => {
-            eprintln!("Failed to fetch guild: {:?}", e);
-            return Err(e);
-        }
-    };
-
-    let guild: Guild = match res.json().await {
-        Ok(guild) => guild,
-        Err(e) => {
-            eprintln!("Failed to parse guild: {:?}", e);
-            return Err(e);
-        }
-    };
-
-    return Ok(guild.name);
 }
